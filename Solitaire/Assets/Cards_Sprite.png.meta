@@ -1,0 +1,1773 @@
+fileFormatVersion: 2
+guid: 592e7442736bb114e9509fe31e90573f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e2a2927212ad2f47bdfd29fdedf1975
+      internalID: 997369169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 875feb518a0e4aa4d8b8d16aec442cf5
+      internalID: 2144190743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2885b586335f84f47a3f8e14b7ec392c
+      internalID: -1053665423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_3
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b4bd969dab68fc47bb5b268435e8617
+      internalID: -336447153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_4
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf9a3d1a5f2122469b770f0f1fe631a
+      internalID: -733744506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87544fde72918ff43bb5cf112b3fe35b
+      internalID: -576375886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_6
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1083732dd5e14542975cf3a29aa00de
+      internalID: 1180227078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_7
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd6197087d882c141a00320ced4f91fb
+      internalID: -612801237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_8
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38e0fe44c49078d4dbafcd4a07435efb
+      internalID: 1459568218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_9
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f886efb6f95767a47a03b76f02311a4a
+      internalID: -1233914833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_10
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77d0fd8b5f2834b4b9eb9f14f27f4803
+      internalID: -761128074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_11
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5475db815b38e9947aa45562f2912c1c
+      internalID: -557081592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_12
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 173
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71f221bba31b34c479f14ceadcb92bb0
+      internalID: 1405947151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_13
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f042548a8d36504cbc2c9e4f48956b6
+      internalID: -1796098889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_14
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed9f41e402239b3468ef75a433f146a6
+      internalID: 1471989947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_15
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 832f77fed570fd04bb835bda40f66ddb
+      internalID: -709218378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_16
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67bc34704115dba469d1bd8d2e32d490
+      internalID: 1943070982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_17
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04cfed1252e186248bdeb76b64fa9c11
+      internalID: -237263485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_18
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3fea637f963af04b9ed27e8af0f2c7e
+      internalID: -104444219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_19
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de4bfc793b4b34439187180bef6b425
+      internalID: -1644710301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_20
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e53a071d37ddc646a07983516669a3b
+      internalID: 532129144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_21
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e6e5a222f7e22439f7defdfd2d4b91
+      internalID: 1873257527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_22
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0416fe11fc012de4f8f04b00ad12241a
+      internalID: 1021967878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_23
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e8a9161db0cc244a4c263f281c5890
+      internalID: -473780318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_24
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa637fc8774ccfe45b7828ed930037fa
+      internalID: -994086483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_25
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 131
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc90c656de880c40bae9e676b2363e8
+      internalID: -1671161566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_26
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e839dec5a35710d4ba1d2f7c46c6e4a0
+      internalID: 1913560623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_27
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec9910a97502004194a9b575d570612
+      internalID: -1985506397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_28
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716a16076139b5949b44e601044e548b
+      internalID: 2107331424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_29
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 847db17929d0fb9459cbd341bbfc0a1b
+      internalID: 167737344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_30
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c417929308fbfc469659eefe1430194
+      internalID: 553336483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_31
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2d0ed786085f8439f342b9ec4bdf62
+      internalID: -2039347103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_32
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e21da0f1e6457b5479df13e0ba07fd77
+      internalID: 642156840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_33
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28371667be7c4f84b85fe6308b63af57
+      internalID: 475995014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_34
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef9d2fd473ee694fa6c789d120b11eb
+      internalID: -574228037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_35
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 772807556795c324698f629f57043def
+      internalID: 1655186550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_36
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b31bad9a2f6c24b8e2e62c8f6f82d9
+      internalID: 1426835504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_37
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4263f79f39217149801a314c78dfe0e
+      internalID: 1143812976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_38
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 89
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce45781bfdd1e14b99a4f4280d0b7a4
+      internalID: 476659868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_39
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d327eae7cfd0d2a4b9af631f97e2542d
+      internalID: 1238440587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_40
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c43b27c58437c444c8ee8241b9b26387
+      internalID: -2107710989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_41
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3679f07be77d6ae4ead5307d125af23d
+      internalID: -889549138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_42
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670f4e3e191628c478f7041d61fd168d
+      internalID: -1352742590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_43
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 249a39cc96deda7498bb3777fd4f87eb
+      internalID: -965892135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_44
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f8e95c5bd220b44ab3634e58f3c4b73
+      internalID: -2090526912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_45
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d119e3b3d9e284e89993db414a0034
+      internalID: 1616992169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_46
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fd96f76a4fc98d4083126b5d6b444f7
+      internalID: -624803358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_47
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c36b6e7d01c98dc48aa18ed0ee1bb727
+      internalID: 909650458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_48
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809d973d2cd0b084ab18225e82d7cd0f
+      internalID: -255946224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_49
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca28cd54a521c447afb8ed493876c20
+      internalID: 1106974712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_50
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a85d60df0a54c4a89808f8e483485b
+      internalID: -604129702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_51
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 47
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ff54c3071def0f4c9b5abdcbeb3690c
+      internalID: -1119801160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_52
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 5
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 961bcf4ff8b6c6d42b7ae0e6696ebcc6
+      internalID: 586989366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_53
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 5
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93791f36e6d84b447a5eaccfb3ab7cfe
+      internalID: -1123810125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_54
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c7002cce7d2659468a48f4c12987d64
+      internalID: -2144777008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_55
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9759175357234c443866def47850791b
+      internalID: 1649415920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_56
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cfe5406dfa6edd4fb77d400e8502104
+      internalID: -1472289453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_57
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d134f9a67c27e048a2c6ffadc429a95
+      internalID: -758705840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_58
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 920b64c071bdc944987a8628f5c52d33
+      internalID: -817216728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_59
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ea5d1e038d0c9442b30ea20c1a9f7f0
+      internalID: -1213231278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_60
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fde674e6e36acf4b8d65ef9af530baa
+      internalID: 1681724593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_61
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3325143ffcdea9949b6d766c938b706d
+      internalID: 1841963252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_62
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 38
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c56284e68c3f4e439ef08bfe53c4114
+      internalID: -1851460697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_63
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 38
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0230b4deeb5a6e4f9bb278607f6dc89
+      internalID: -615261023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_64
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652dbaa5c2a2bb84dbdb25457eb66757
+      internalID: 1158643564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_65
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3069e94cca8854e805f0205bec37ae
+      internalID: 1122563413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_66
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 38
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fefef866bdc8c7d4eb8a18f07949ad5f
+      internalID: 1652193529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_67
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 28
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b96e545505e15fd4e98aeb9b0095093f
+      internalID: 1033523385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_68
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 28
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061f681f03b51f643818c2af6960483c
+      internalID: 577771745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_69
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 28
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8277b31ce87eb3146b05f544319680af
+      internalID: -759348725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_70
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 28
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97772aebaeb8da547ba9685ecaa9429c
+      internalID: 1815670536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_71
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 15
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1291a0547d09748a1e5a7c69b4f212
+      internalID: -1903289558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_72
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 15
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d051d35cde8b7447811f9fd26f5f178
+      internalID: -687396320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_73
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 14
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20f546d836573e4aaeacef6cdf8a3e4
+      internalID: 607888109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pixel_playing_cards_by_celeronat_dbo6zpm_74
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 16
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93c176d03c7f3284b8198bf4df816d4d
+      internalID: 1568456924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      pixel_playing_cards_by_celeronat_dbo6zpm_0: 997369169
+      pixel_playing_cards_by_celeronat_dbo6zpm_1: 2144190743
+      pixel_playing_cards_by_celeronat_dbo6zpm_10: -761128074
+      pixel_playing_cards_by_celeronat_dbo6zpm_11: -557081592
+      pixel_playing_cards_by_celeronat_dbo6zpm_12: 1405947151
+      pixel_playing_cards_by_celeronat_dbo6zpm_13: -1796098889
+      pixel_playing_cards_by_celeronat_dbo6zpm_14: 1471989947
+      pixel_playing_cards_by_celeronat_dbo6zpm_15: -709218378
+      pixel_playing_cards_by_celeronat_dbo6zpm_16: 1943070982
+      pixel_playing_cards_by_celeronat_dbo6zpm_17: -237263485
+      pixel_playing_cards_by_celeronat_dbo6zpm_18: -104444219
+      pixel_playing_cards_by_celeronat_dbo6zpm_19: -1644710301
+      pixel_playing_cards_by_celeronat_dbo6zpm_2: -1053665423
+      pixel_playing_cards_by_celeronat_dbo6zpm_20: 532129144
+      pixel_playing_cards_by_celeronat_dbo6zpm_21: 1873257527
+      pixel_playing_cards_by_celeronat_dbo6zpm_22: 1021967878
+      pixel_playing_cards_by_celeronat_dbo6zpm_23: -473780318
+      pixel_playing_cards_by_celeronat_dbo6zpm_24: -994086483
+      pixel_playing_cards_by_celeronat_dbo6zpm_25: -1671161566
+      pixel_playing_cards_by_celeronat_dbo6zpm_26: 1913560623
+      pixel_playing_cards_by_celeronat_dbo6zpm_27: -1985506397
+      pixel_playing_cards_by_celeronat_dbo6zpm_28: 2107331424
+      pixel_playing_cards_by_celeronat_dbo6zpm_29: 167737344
+      pixel_playing_cards_by_celeronat_dbo6zpm_3: -336447153
+      pixel_playing_cards_by_celeronat_dbo6zpm_30: 553336483
+      pixel_playing_cards_by_celeronat_dbo6zpm_31: -2039347103
+      pixel_playing_cards_by_celeronat_dbo6zpm_32: 642156840
+      pixel_playing_cards_by_celeronat_dbo6zpm_33: 475995014
+      pixel_playing_cards_by_celeronat_dbo6zpm_34: -574228037
+      pixel_playing_cards_by_celeronat_dbo6zpm_35: 1655186550
+      pixel_playing_cards_by_celeronat_dbo6zpm_36: 1426835504
+      pixel_playing_cards_by_celeronat_dbo6zpm_37: 1143812976
+      pixel_playing_cards_by_celeronat_dbo6zpm_38: 476659868
+      pixel_playing_cards_by_celeronat_dbo6zpm_39: 1238440587
+      pixel_playing_cards_by_celeronat_dbo6zpm_4: -733744506
+      pixel_playing_cards_by_celeronat_dbo6zpm_40: -2107710989
+      pixel_playing_cards_by_celeronat_dbo6zpm_41: -889549138
+      pixel_playing_cards_by_celeronat_dbo6zpm_42: -1352742590
+      pixel_playing_cards_by_celeronat_dbo6zpm_43: -965892135
+      pixel_playing_cards_by_celeronat_dbo6zpm_44: -2090526912
+      pixel_playing_cards_by_celeronat_dbo6zpm_45: 1616992169
+      pixel_playing_cards_by_celeronat_dbo6zpm_46: -624803358
+      pixel_playing_cards_by_celeronat_dbo6zpm_47: 909650458
+      pixel_playing_cards_by_celeronat_dbo6zpm_48: -255946224
+      pixel_playing_cards_by_celeronat_dbo6zpm_49: 1106974712
+      pixel_playing_cards_by_celeronat_dbo6zpm_5: -576375886
+      pixel_playing_cards_by_celeronat_dbo6zpm_50: -604129702
+      pixel_playing_cards_by_celeronat_dbo6zpm_51: -1119801160
+      pixel_playing_cards_by_celeronat_dbo6zpm_52: 586989366
+      pixel_playing_cards_by_celeronat_dbo6zpm_53: -1123810125
+      pixel_playing_cards_by_celeronat_dbo6zpm_54: -2144777008
+      pixel_playing_cards_by_celeronat_dbo6zpm_55: 1649415920
+      pixel_playing_cards_by_celeronat_dbo6zpm_56: -1472289453
+      pixel_playing_cards_by_celeronat_dbo6zpm_57: -758705840
+      pixel_playing_cards_by_celeronat_dbo6zpm_58: -817216728
+      pixel_playing_cards_by_celeronat_dbo6zpm_59: -1213231278
+      pixel_playing_cards_by_celeronat_dbo6zpm_6: 1180227078
+      pixel_playing_cards_by_celeronat_dbo6zpm_60: 1681724593
+      pixel_playing_cards_by_celeronat_dbo6zpm_61: 1841963252
+      pixel_playing_cards_by_celeronat_dbo6zpm_62: -1851460697
+      pixel_playing_cards_by_celeronat_dbo6zpm_63: -615261023
+      pixel_playing_cards_by_celeronat_dbo6zpm_64: 1158643564
+      pixel_playing_cards_by_celeronat_dbo6zpm_65: 1122563413
+      pixel_playing_cards_by_celeronat_dbo6zpm_66: 1652193529
+      pixel_playing_cards_by_celeronat_dbo6zpm_67: 1033523385
+      pixel_playing_cards_by_celeronat_dbo6zpm_68: 577771745
+      pixel_playing_cards_by_celeronat_dbo6zpm_69: -759348725
+      pixel_playing_cards_by_celeronat_dbo6zpm_7: -612801237
+      pixel_playing_cards_by_celeronat_dbo6zpm_70: 1815670536
+      pixel_playing_cards_by_celeronat_dbo6zpm_71: -1903289558
+      pixel_playing_cards_by_celeronat_dbo6zpm_72: -687396320
+      pixel_playing_cards_by_celeronat_dbo6zpm_73: 607888109
+      pixel_playing_cards_by_celeronat_dbo6zpm_74: 1568456924
+      pixel_playing_cards_by_celeronat_dbo6zpm_8: 1459568218
+      pixel_playing_cards_by_celeronat_dbo6zpm_9: -1233914833
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
