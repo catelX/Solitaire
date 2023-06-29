@@ -7,12 +7,12 @@ public class DeckOfCards : MonoBehaviour
 {
     public static DeckOfCards instance;
     public GameObject cardPrefab;
-    public List<Sprite> spadeSprites = new List<Sprite>();
-    public List<Sprite> clubSprites = new List<Sprite>();
-    public List<Sprite> heartSprites = new List<Sprite>();
-    public List<Sprite> diamondSprites = new List<Sprite>();
+    public List<Sprite> spadeSprites = new();
+    public List<Sprite> clubSprites = new();
+    public List<Sprite> heartSprites = new();
+    public List<Sprite> diamondSprites = new();
 
-    private List<GameObject> deckOfCards = new List<GameObject>();
+    private List<GameObject> deckOfCards = new();
 
     private void Awake()
     {
@@ -33,12 +33,12 @@ public class DeckOfCards : MonoBehaviour
         {
             GameObject card = Instantiate(cardPrefab);
             Sprite cardSprite = spadeSprites[i];
-            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, "Spades");
+            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, Symbols.Spades);
             deckOfCards.Add(card);
 
             card = Instantiate(cardPrefab);
             cardSprite = clubSprites[i];
-            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, "Clubs");
+            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, Symbols.Clubs);
             deckOfCards.Add(card);
         }
 
@@ -46,12 +46,12 @@ public class DeckOfCards : MonoBehaviour
         {
             GameObject card = Instantiate(cardPrefab);
             Sprite cardSprite = heartSprites[i];
-            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, "Hearts");
+            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, Symbols.Hearts);
             deckOfCards.Add(card);
 
             card = Instantiate(cardPrefab);
             cardSprite = diamondSprites[i];
-            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, "Diamonds");
+            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, Symbols.Diamonds);
             deckOfCards.Add(card);
         }
     }

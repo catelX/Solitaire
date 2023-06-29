@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cards;
 
-public class FaceUpDeck : CardHolder, ISnapCardToPosition, IHandleCards
+public class FaceUpDeck : CardHolder
 {
     public FaceDownDeck faceDownDeck;
 
-    public void SnapCardsToPosition()
+    public override void SnapCardsToPosition()
     {
         for (int i = 0; i < cards.Count; i++)
         {

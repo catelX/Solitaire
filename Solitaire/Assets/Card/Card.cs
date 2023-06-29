@@ -4,6 +4,14 @@ using UnityEngine;
 
 namespace Cards
 {
+    public enum Symbols
+    {
+        Spades,
+        Clubs,
+        Hearts,
+        Diamonds
+    }
+
     public class Card : MonoBehaviour
     {
         private SpriteRenderer spriteRenderer;
@@ -11,21 +19,15 @@ namespace Cards
         public Sprite faceDownImage;
         private bool isFaceUp;
         private int value;
-        public enum Symbols
-        {
-            Spades,
-            Clubs,
-            Hearts,
-            Diamonds
-        }
-        public string symbol;
+        
+        public Symbols symbol;
         private void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             isFaceUp = false;
         }
 
-        public void ConfigureCard(Sprite _faceUpImage, int _value, string _symbol)
+        public void ConfigureCard(Sprite _faceUpImage, int _value, Symbols _symbol)
         {
             faceUpImage = _faceUpImage;
             value = _value;
@@ -62,17 +64,19 @@ namespace Cards
 
         public bool IsRed()
         {
-            switch(symbol)
+            switch (symbol)
             {
-                case "Spades": return false;
-                case "Clubs": return false;
-                case "Hearts": return true;
-                case "Diamonds": return true;
+                case Symbols.Spades:
+                case Symbols.Clubs:
+                    return false;
+                case Symbols.Hearts:
+                case Symbols.Diamonds:
+                default:
+                    return true;
             }
-            return false;
         }
 
-        public string GetSymbol()
+        public Symbols GetSymbol()
         {
             return symbol;
         }

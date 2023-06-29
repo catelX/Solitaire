@@ -5,8 +5,8 @@ using Cards;
 
 public class MainManager : MonoBehaviour
 {
-    public List<GameObject> cardHoldersTop = new List<GameObject>();
-    public List<GameObject> cardHoldersBottom = new List<GameObject>();
+    public List<GameObject> cardHoldersTop = new();
+    public List<GameObject> cardHoldersBottom = new();
     public GameObject faceDownDeck;
     public LayerMask layerMask;
 
@@ -35,7 +35,7 @@ public class MainManager : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             HandleMouseReleaseRayCast(mousePos);
-
+            CheckClearCondition();
             pickedUpCards.Clear();
             currentCardHolder = null;
         }
@@ -49,9 +49,9 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    private void HandleMouseClickRayCast(Vector3 mousePos)
+    private void HandleMouseClickRayCast(Vector3 _mousePos)
     {
-        RaycastHit2D[] rays = Physics2D.RaycastAll(mousePos, transform.forward, 10);
+        RaycastHit2D[] rays = Physics2D.RaycastAll(_mousePos, transform.forward, 10);
         for (int i = 0; i < rays.Length; i++)
         {
             if (rays[rays.Length-1].collider.CompareTag("FaceDownDeck"))
@@ -73,37 +73,34 @@ public class MainManager : MonoBehaviour
                 if (card.IsFaceUp())
                 {
                     currentCardHolder = rays[rays.Length - 1].collider.gameObject;
-                    pickedUpCards = currentCardHolder.GetComponent<IHandleCards>().GetCardListAfter(card);
+                    pickedUpCards = currentCardHolder.GetComponent<CardHolder>().GetCardListAfter(card);
                 }
             }  
         }
     }
 
-    private void HandleMouseReleaseRayCast(Vector3 mousePos)
+    private void HandleMouseReleaseRayCast(Vector3 _mousePos)
     {
         if (pickedUpCards.Count == 0) return;
 
-        RaycastHit2D ray = Physics2D.Raycast(mousePos, transform.forward, 10, layerMask);
-        if(ray.collider == null || ray.collider.gameObject == currentCardHolder)
+        RaycastHit2D ray = Physics2D.Raycast(_mousePos, transform.forward, 10, layerMask);
+
+        if(ray.collider == null || ray.collider.gameObject == currentCardHolder
+            || ray.collider.CompareTag("FaceDownDeck") || ray.collider.CompareTag("FaceUpDeck"))
         {
-            currentCardHolder.GetComponent<ISnapCardToPosition>().SnapCardsToPosition();
+            currentCardHolder.GetComponent<CardHolder>().SnapCardsToPosition();
             return;
         }
 
-        if (ray.collider.tag != "FaceDownDeck" && ray.collider.tag != "FaceUpDeck")
+        if(ray.collider.gameObject.GetComponent<CardHolder>().IsCardTransferable(pickedUpCards[0]))
         {
-            if(ray.collider.gameObject.GetComponent<IConditionCheck>().IsCardTransferable(pickedUpCards[0]))
-            {
-                ray.collider.gameObject.GetComponent<IHandleCards>().AddCardsFromList(pickedUpCards);
-                ray.collider.gameObject.GetComponent<ISnapCardToPosition>().SnapCardsToPosition();
-                currentCardHolder.GetComponent<IHandleCards>().RemoveCardsFromList(pickedUpCards);
-                currentCardHolder.GetComponent<ISnapCardToPosition>().SnapCardsToPosition();
-            }
-            else
-            {
-                currentCardHolder.GetComponent<ISnapCardToPosition>().SnapCardsToPosition();
-            }
-        } 
+            ray.collider.gameObject.GetComponent<CardHolder>().AddCardsFromList(pickedUpCards);
+            currentCardHolder.GetComponent<CardHolder>().RemoveCardsFromList(pickedUpCards);
+        }
+        else
+        {
+            currentCardHolder.GetComponent<CardHolder>().SnapCardsToPosition();
+        }
     }
 
     private void CheckClearCondition()
@@ -132,9 +129,9 @@ public class MainManager : MonoBehaviour
             for(int j = 0; j <= i; j++)
             {
                 card = DeckOfCards.instance.GetRandomCardFromDeck();
-                cardHoldersBottom[i].GetComponent<CardHolderBottom>().AddCardWithoutCondition(card);
+                cardHoldersBottom[i].GetComponent<CardHolder>().AddCardWithoutCondition(card);
             }
-            cardHoldersBottom[i].GetComponent<CardHolderBottom>().SnapCardsToPosition();
+            cardHoldersBottom[i].GetComponent<CardHolder>().SnapCardsToPosition();
         }
         card = DeckOfCards.instance.GetRandomCardFromDeck();
         while(card != null)
@@ -142,6 +139,6 @@ public class MainManager : MonoBehaviour
             faceDownDeck.GetComponent<FaceDownDeck>().AddCardToFaceDownDeck(card);
             card = DeckOfCards.instance.GetRandomCardFromDeck();
         }
-        faceDownDeck.GetComponent<FaceDownDeck>().SnapCardsToPosition();
+        faceDownDeck.GetComponent<CardHolder>().SnapCardsToPosition();
     }
 }

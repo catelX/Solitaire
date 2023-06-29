@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cards;
 
-public class CardHolderBottom : CardHolder, IConditionCheck, IHandleCards, ISnapCardToPosition
+public class CardHolderBottom : CardHolder
 {
 
-    public void SnapCardsToPosition()
+    public override void SnapCardsToPosition()
     {
         for (int i = 0; i < cards.Count; i++)
         {
@@ -18,7 +18,7 @@ public class CardHolderBottom : CardHolder, IConditionCheck, IHandleCards, ISnap
         }
     }
 
-    public bool IsCardTransferable(Card card)
+    public override bool IsCardTransferable(Card card)
     {
         if(cards.Count == 0)
         {

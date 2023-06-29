@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cards;
 
-public class FaceDownDeck : MonoBehaviour, ISnapCardToPosition
+public class FaceDownDeck : CardHolder
 {
-    private List<Card> closedCards = new List<Card>();
     public FaceUpDeck faceUpDeck;
 
-    public void SnapCardsToPosition()
+    public override void SnapCardsToPosition()
     {
-        for (int i = 0; i < closedCards.Count; i++)
+        for (int i = 0; i < cards.Count; i++)
         {
-            closedCards[i].gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - (0.1f * (i + 1)));
+            cards[i].gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - (0.1f * (i + 1)));
         }
     }
 
     public void AddToFaceUpDeck()
     {
-        Card card = closedCards[closedCards.Count - 1];
-        closedCards.Remove(card);
+        Card card = cards[cards.Count - 1];
+        cards.Remove(card);
         card.SetFaceUp(true);
         faceUpDeck.AddCard(card);
     }
@@ -30,7 +29,7 @@ public class FaceDownDeck : MonoBehaviour, ISnapCardToPosition
         while(card != null)
         {
             card.SetFaceUp(false);
-            closedCards.Add(card);
+            cards.Add(card);
             card = faceUpDeck.RemoveAndReturnTopCard();
         }
         SnapCardsToPosition();
@@ -38,6 +37,6 @@ public class FaceDownDeck : MonoBehaviour, ISnapCardToPosition
 
     public void AddCardToFaceDownDeck(Card card)
     {
-        closedCards.Add(card);
+        cards.Add(card);
     }
 }
