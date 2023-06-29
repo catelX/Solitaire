@@ -3,53 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cards;
 
-public class CardHolderBottom : MonoBehaviour, IConditionCheck
+public class CardHolderBottom : CardHolder, IConditionCheck, IHandleCards, ISnapCardToPosition
 {
-
-    private List<GameObject> cards = new List<GameObject>();
-    private Vector3 myPos;
-
-    private void Awake()
-    {
-        myPos = transform.position;
-    }
 
     public void SnapCardsToPosition()
     {
         for (int i = 0; i < cards.Count; i++)
         {
-            cards[i].transform.position = new Vector3(myPos.x, myPos.y - (0.4f * i), myPos.z - (0.1f * (i + 1)));
-            if(i == cards.Count -1)
+            cards[i].gameObject.transform.position = new Vector3(transform.position.x, transform.position.y - (0.4f * i), transform.position.z - (0.1f * (i + 1)));
+            if (i == cards.Count - 1)
             {
-                cards[i].GetComponent<Card>().SetFaceUp(true);
+                cards[i].SetFaceUp(true);
             }
         }
     }
 
-    public void CheckAndAddCard(GameObject card)
+    public bool IsCardTransferable(Card card)
     {
         if(cards.Count == 0)
         {
-            if(card.GetComponent<Card>().GetValue() == 13)
+            if(card.GetValue() == 13)
             {
-                cards.Add(card);
+                return true;
             }
             else
             {
-                return;
+                return false;
             }
         }
 
-        int topCardValue = cards[cards.Count - 1].GetComponent<Card>().GetValue();
+        int topCardValue = cards[cards.Count - 1].GetValue();
 
-        if (card.GetComponent<Card>().GetValue() == topCardValue + 1 && card.GetComponent<Card>().IsRed() != cards[cards.Count - 1].GetComponent<Card>().IsRed())
+        if (card.GetValue() == topCardValue - 1 && card.IsRed() != cards[cards.Count - 1].IsRed())
         {
-            cards.Add(card);
+            return true;
         }
-    }
 
-    public void AddCardWithoutCondition(GameObject card)
-    {
-        cards.Add(card);
+        return false;
     }
 }

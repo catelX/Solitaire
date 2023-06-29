@@ -11,7 +11,8 @@ public class MainManager : MonoBehaviour
     public LayerMask layerMask;
 
     private Vector3 mousePos;
-    private GameObject pickedUpCard;
+    private List<Card> pickedUpCards = new();
+    private GameObject currentCardHolder;
 
     private void Start()
     {
@@ -29,13 +30,22 @@ public class MainManager : MonoBehaviour
         }
         if(Input.GetMouseButton(0))
         {
-            if(pickedUpCard != null)
-                pickedUpCard.transform.position = mousePos;
+            MoveCards(mousePos);
         }
         if(Input.GetMouseButtonUp(0))
         {
-            SetAllCardsToPosition();
-            pickedUpCard = null;
+            HandleMouseReleaseRayCast(mousePos);
+
+            pickedUpCards.Clear();
+            currentCardHolder = null;
+        }
+    }
+
+    private void MoveCards(Vector3 _mousePos)
+    {
+        for (int i = 1; i < pickedUpCards.Count+1; i++)
+        {
+            pickedUpCards[i-1].gameObject.transform.position = new Vector3(_mousePos.x, _mousePos.y - (0.4f * i), _mousePos.z - (0.1f * i));
         }
     }
 
@@ -44,52 +54,78 @@ public class MainManager : MonoBehaviour
         RaycastHit2D[] rays = Physics2D.RaycastAll(mousePos, transform.forward, 10);
         for (int i = 0; i < rays.Length; i++)
         {
-            
-
             if (rays[rays.Length-1].collider.CompareTag("FaceDownDeck"))
             {
                 if (rays.Length - 1 == 0)
                 {
                     rays[0].collider.gameObject.GetComponent<FaceDownDeck>().MoveCardsFromOpenedToClosed();
                 }
-
-                rays[rays.Length - 1].collider.gameObject.GetComponent<FaceDownDeck>().AddToFaceUpDeck();
-                return;
+                else
+                {
+                    rays[rays.Length - 1].collider.gameObject.GetComponent<FaceDownDeck>().AddToFaceUpDeck();
+                    return;
+                }
             }
 
-            if (rays[i].collider.CompareTag("Card") && pickedUpCard == null)
+            if (rays[i].collider.CompareTag("Card") && pickedUpCards.Count == 0)
             {
-                pickedUpCard = rays[i].collider.gameObject;
+                Card card = rays[i].collider.gameObject.GetComponent<Card>();
+                if (card.IsFaceUp())
+                {
+                    currentCardHolder = rays[rays.Length - 1].collider.gameObject;
+                    pickedUpCards = currentCardHolder.GetComponent<IHandleCards>().GetCardListAfter(card);
+                }
             }  
         }
     }
 
     private void HandleMouseReleaseRayCast(Vector3 mousePos)
     {
-        RaycastHit2D ray = Physics2D.Raycast(mousePos, transform.forward, 10, layerMask);
+        if (pickedUpCards.Count == 0) return;
 
-        if (LayerMask.LayerToName(ray.collider.gameObject.layer) == "CardHolder")
+        RaycastHit2D ray = Physics2D.Raycast(mousePos, transform.forward, 10, layerMask);
+        if(ray.collider == null || ray.collider.gameObject == currentCardHolder)
         {
-            ray.collider.gameObject.GetComponents<IConditionCheck>().CheckAndAddCard(pickedUpCard);
+            currentCardHolder.GetComponent<ISnapCardToPosition>().SnapCardsToPosition();
+            return;
         }
+
+        if (ray.collider.tag != "FaceDownDeck" && ray.collider.tag != "FaceUpDeck")
+        {
+            if(ray.collider.gameObject.GetComponent<IConditionCheck>().IsCardTransferable(pickedUpCards[0]))
+            {
+                ray.collider.gameObject.GetComponent<IHandleCards>().AddCardsFromList(pickedUpCards);
+                ray.collider.gameObject.GetComponent<ISnapCardToPosition>().SnapCardsToPosition();
+                currentCardHolder.GetComponent<IHandleCards>().RemoveCardsFromList(pickedUpCards);
+                currentCardHolder.GetComponent<ISnapCardToPosition>().SnapCardsToPosition();
+            }
+            else
+            {
+                currentCardHolder.GetComponent<ISnapCardToPosition>().SnapCardsToPosition();
+            }
+        } 
     }
 
-    private void SetAllCardsToPosition()
+    private void CheckClearCondition()
     {
-        foreach(GameObject cardHolder in cardHoldersTop)
+        int stacksCompleted = 0;
+        foreach(GameObject cardholder in cardHoldersTop)
         {
-            cardHolder.GetComponent<CardHolderTop>().SnapCardsToPosition();
+            if(cardholder.GetComponent<CardHolderTop>().IsStackComplete())
+            {
+                stacksCompleted++;
+            }
         }
-        foreach(GameObject cardHolder in cardHoldersBottom)
+
+        if(stacksCompleted == 4)
         {
-            cardHolder.GetComponent<CardHolderBottom>().SnapCardsToPosition();
+            Debug.Log("You Win!");
         }
-        faceDownDeck.GetComponent<FaceDownDeck>().SnapCardsToPosition();
     }
 
     public void Initialize()
     {
-        GameObject card;
+        Card card;
 
         for(int i = 0; i < cardHoldersBottom.Count; i++)
         {

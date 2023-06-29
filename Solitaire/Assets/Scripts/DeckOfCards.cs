@@ -33,12 +33,12 @@ public class DeckOfCards : MonoBehaviour
         {
             GameObject card = Instantiate(cardPrefab);
             Sprite cardSprite = spadeSprites[i];
-            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, false, "Spades");
+            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, "Spades");
             deckOfCards.Add(card);
 
             card = Instantiate(cardPrefab);
             cardSprite = clubSprites[i];
-            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, false, "Clubs");
+            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, "Clubs");
             deckOfCards.Add(card);
         }
 
@@ -46,22 +46,22 @@ public class DeckOfCards : MonoBehaviour
         {
             GameObject card = Instantiate(cardPrefab);
             Sprite cardSprite = heartSprites[i];
-            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, true, "Hearts");
+            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, "Hearts");
             deckOfCards.Add(card);
 
             card = Instantiate(cardPrefab);
             cardSprite = diamondSprites[i];
-            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, true, "Diamonds");
+            card.GetComponent<Card>().ConfigureCard(cardSprite, i + 1, "Diamonds");
             deckOfCards.Add(card);
         }
     }
 
-    public GameObject GetRandomCardFromDeck()
+    public Card GetRandomCardFromDeck()
     {
         int ranIndex = Random.Range(0, deckOfCards.Count);
         if (deckOfCards.Count == 0) return null;
         GameObject card = deckOfCards[ranIndex];
         deckOfCards.Remove(card);
-        return card;
+        return card.GetComponent<Card>();
     }
 }

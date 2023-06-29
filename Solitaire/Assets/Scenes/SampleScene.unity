@@ -150,7 +150,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100335977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6042154, y: 0.811952, z: 0.075844824}
+  m_LocalPosition: {x: 0.40000033, y: 0.43000007, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242d2d8e7a7f673468ac3dfea5a3dd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &100335980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -274,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120165617}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6542153, y: 3.181952, z: 0.075844824}
+  m_LocalPosition: {x: 7.55, y: 0.8499999, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -293,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ff04484fab2824597de7c64534d04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &120165620
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -398,7 +400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179400422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.604215, y: 0.811952, z: 0.075844824}
+  m_LocalPosition: {x: 4.4, y: 0.43000007, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -417,6 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242d2d8e7a7f673468ac3dfea5a3dd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &179400425
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -522,7 +525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304357232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3957846, y: 0.811952, z: 0.075844824}
+  m_LocalPosition: {x: -3.6, y: 0.43000007, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -541,6 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242d2d8e7a7f673468ac3dfea5a3dd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &304357235
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -646,7 +650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333678004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.39578468, y: 0.811952, z: 0.075844824}
+  m_LocalPosition: {x: -1.5999997, y: 0.43000007, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -665,6 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242d2d8e7a7f673468ac3dfea5a3dd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &333678007
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -753,6 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 435127936}
   - component: {fileID: 435127935}
+  - component: {fileID: 435127938}
   - component: {fileID: 435127937}
   m_Layer: 6
   m_Name: FaceUpDeck
@@ -828,7 +834,21 @@ Transform:
   m_Father: {fileID: 1645281562}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &435127937
+--- !u!114 &435127937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435127934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c5c90299216d7408ed3d06b6712c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: []
+  faceDownDeck: {fileID: 1645281564}
+--- !u!61 &435127938
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1025,7 +1045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902087334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.654215, y: 3.181952, z: 0.075844824}
+  m_LocalPosition: {x: 7.55, y: -1.26, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1044,6 +1064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ff04484fab2824597de7c64534d04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &902087337
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1149,7 +1170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973422199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.654215, y: 3.181952, z: 0.075844824}
+  m_LocalPosition: {x: 7.55, y: -3.33, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1168,6 +1189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ff04484fab2824597de7c64534d04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &973422202
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1351,7 +1373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277379109}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6542153, y: 3.181952, z: 0.075844824}
+  m_LocalPosition: {x: 7.55, y: 2.92, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1370,6 +1392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ff04484fab2824597de7c64534d04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!1 &1482279656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614980969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6042154, y: 0.811952, z: 0.075844824}
+  m_LocalPosition: {x: 2.4000003, y: 0.43000007, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1458,6 +1481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242d2d8e7a7f673468ac3dfea5a3dd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &1614980972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1615,7 +1639,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645281560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.49, y: 3.48, z: 0}
+  m_LocalPosition: {x: -1.85, y: 3.44, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1636,7 +1660,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0018351078, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1647,7 +1671,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28, y: 0.41}
+  m_Size: {x: 0.2836702, y: 0.41}
   m_EdgeRadius: 0
 --- !u!114 &1645281564
 MonoBehaviour:
@@ -1661,7 +1685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15baf126225e27a4ebc310e9d91d586f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faceUpDeck: {fileID: 435127934}
+  faceUpDeck: {fileID: 435127937}
 --- !u!1 &1730710450
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1713,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730710450}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.395785, y: 0.811952, z: 0.075844824}
+  m_LocalPosition: {x: -5.6, y: 0.43, z: 0.075844824}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1708,6 +1732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242d2d8e7a7f673468ac3dfea5a3dd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!61 &1730710453
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11,20 +11,24 @@ namespace Cards
         public Sprite faceDownImage;
         private bool isFaceUp;
         private int value;
-        private bool isRed;
-        private string symbol;
-
+        public enum Symbols
+        {
+            Spades,
+            Clubs,
+            Hearts,
+            Diamonds
+        }
+        public string symbol;
         private void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             isFaceUp = false;
         }
 
-        public void ConfigureCard(Sprite _faceUpImage, int _value, bool _isRed, string _symbol)
+        public void ConfigureCard(Sprite _faceUpImage, int _value, string _symbol)
         {
             faceUpImage = _faceUpImage;
             value = _value;
-            isRed = _isRed;
             symbol = _symbol;
         }
 
@@ -46,7 +50,7 @@ namespace Cards
             isFaceUp = _isFaceUp;
         }
 
-        public bool GetIsFaceUp()
+        public bool IsFaceUp()
         {
             return isFaceUp;
         }
@@ -58,7 +62,14 @@ namespace Cards
 
         public bool IsRed()
         {
-            return isRed;
+            switch(symbol)
+            {
+                case "Spades": return false;
+                case "Clubs": return false;
+                case "Hearts": return true;
+                case "Diamonds": return true;
+            }
+            return false;
         }
 
         public string GetSymbol()
