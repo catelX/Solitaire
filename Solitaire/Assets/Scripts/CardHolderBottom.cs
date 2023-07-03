@@ -16,6 +16,7 @@ public class CardHolderBottom : CardHolder
                 cards[i].SetFaceUp(true);
             }
         }
+        AudioManager.instance.PlayCardReleasedClip();
     }
 
     public override bool IsCardTransferable(Card card)

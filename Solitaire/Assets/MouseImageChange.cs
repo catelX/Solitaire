@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseImageChange : MonoBehaviour
 {
     private Vector3 mousePos;
-    public GameObject mouseImage;
+    public Image mouseImage;
     public float xOffset;
     public float yOffset;
 
+
+    private void Awake()
+    {
+        Cursor.visible = false;
+    }
     void Update()
     {
         SetMousePosition();

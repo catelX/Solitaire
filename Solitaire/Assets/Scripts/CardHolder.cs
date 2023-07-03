@@ -10,8 +10,8 @@ public class CardHolder : MonoBehaviour
 
     public void Awake()
     {
-        colors[0] = Color.yellow;
-        colors[1] = Color.white;
+        colors[0] = Color.white;
+        colors[1] = new Color(230f/255f, 230f / 255f, 230f / 255f);
     }
 
     public int Count()
@@ -29,6 +29,7 @@ public class CardHolder : MonoBehaviour
                 cards[i].SetFaceUp(true);
             }
         }
+        AudioManager.instance.PlayCardReleasedClip();
     }
 
     public virtual bool IsCardTransferable(Card card)
@@ -83,7 +84,21 @@ public class CardHolder : MonoBehaviour
         return false;
     }
 
+    public bool IsCardAboveFaceUp(Card card)
+    {
+        int index = 0;
 
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if(card == cards[i])
+            {
+                index = i-1;
+            }
+        }
+        if (index < 0) return false;
+
+        return cards[index].IsFaceUp();
+    }
     public virtual void AddCardsFromList(List<Card> cardList)
     {
         DeactivateCardHighlight();
