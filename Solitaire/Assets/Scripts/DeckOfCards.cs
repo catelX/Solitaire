@@ -56,7 +56,7 @@ public class DeckOfCards : MonoBehaviour
         }
     }
 
-    public void AddCardToDeckFromList(List<Card> cardList)
+    public void AddCardsToDeckFromList(List<Card> cardList)
     {
         for (int i = 0; i < cardList.Count; i++)
         {

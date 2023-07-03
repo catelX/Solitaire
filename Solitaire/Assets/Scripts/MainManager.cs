@@ -112,6 +112,7 @@ public class MainManager : MonoBehaviour
         transferedCardLists.Remove(transferedCardLists[^1]);
         transferedHolders.Remove(transferedHolders[^1]);
         sourceHolders.Remove(sourceHolders[^1]);
+        audios[3].Play();
     }
 
     private void MoveCards(Vector3 _mousePos)
@@ -271,7 +272,7 @@ public class MainManager : MonoBehaviour
         for (int i = 0; i < cardHoldersTop.Count; i++)
         {
             List<Card> cardList = cardHoldersTop[i].GetAllCardsList();
-            DeckOfCards.instance.AddCardToDeckFromList(cardList);
+            DeckOfCards.instance.AddCardsToDeckFromList(cardList);
         }
         hasWon = false;
         Initialize();
