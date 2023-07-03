@@ -17,7 +17,7 @@ public class FaceDownDeck : CardHolder
 
     public void AddToFaceUpDeck()
     {
-        Card card = cards[cards.Count - 1];
+        Card card = cards[^1];
         cards.Remove(card);
         card.SetFaceUp(true);
         faceUpDeck.AddCard(card);

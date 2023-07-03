@@ -32,9 +32,9 @@ public class CardHolderBottom : CardHolder
             }
         }
 
-        int topCardValue = cards[cards.Count - 1].GetValue();
+        int topCardValue = cards[^1].GetValue();
 
-        if (card.GetValue() == topCardValue - 1 && card.IsRed() != cards[cards.Count - 1].IsRed())
+        if (card.GetValue() == topCardValue - 1 && card.IsRed() != cards[^1].IsRed())
         {
             return true;
         }

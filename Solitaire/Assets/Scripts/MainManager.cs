@@ -5,17 +5,33 @@ using Cards;
 
 public class MainManager : MonoBehaviour
 {
-    public List<GameObject> cardHoldersTop = new();
-    public List<GameObject> cardHoldersBottom = new();
-    public GameObject faceDownDeck;
+    public List<CardHolderTop> cardHoldersTop = new();
+    public List<CardHolderBottom> cardHoldersBottom = new();
+    public List<AudioSource> audios = new();
+    public FaceDownDeck faceDownDeck;
     public LayerMask layerMask;
 
     private Vector3 mousePos;
+    private Vector3 offSet;
+
     private List<Card> pickedUpCards = new();
-    private GameObject currentCardHolder;
+    private List<CardHolder> sourceHolders = new();
+    private List<CardHolder> transferedHolders = new();
+    private List<List<Card>> transferedCardLists = new();
+    private CardHolder sourceCardHolder;
+    private int registeredMoves = 0;
+
+    private CardHolder highlightedHolder;
+    private bool mouseClickedOnce;
+    private float mouseSecondClickTimer;
+
+    public GameObject gameWinPanel;
+    private bool hasWon;
 
     private void Start()
     {
+        hasWon = false;
+        Cursor.visible = false;
         Initialize();
     }
 
@@ -24,28 +40,114 @@ public class MainManager : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = -5f;
 
+        if (hasWon) return;
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            UndoMove();
+            return;
+        }
+
+        if(mouseClickedOnce)mouseSecondClickTimer += Time.deltaTime;
+        if(mouseSecondClickTimer >= 0.2f)
+        {
+            mouseSecondClickTimer = 0;
+            mouseClickedOnce = false;
+        }
+
         if(Input.GetMouseButtonDown(0))
         {
-            HandleMouseClickRayCast(mousePos);
+            if(mouseClickedOnce)
+            {
+                mouseSecondClickTimer = 0;
+                HandleDoubleMouseClick(mousePos);
+                mouseClickedOnce = false;
+                return;
+            }
+            else
+            {
+                mouseClickedOnce = true;
+                HandleMouseClickRayCast(mousePos);
+            }
         }
         if(Input.GetMouseButton(0))
         {
             MoveCards(mousePos);
+            HandleMouseMoveBoxCast(mousePos);
         }
         if(Input.GetMouseButtonUp(0))
         {
             HandleMouseReleaseRayCast(mousePos);
             CheckClearCondition();
             pickedUpCards.Clear();
-            currentCardHolder = null;
+            sourceCardHolder = null;
+            if(highlightedHolder != null)
+            {
+                highlightedHolder.DeactivateCardHighlight();
+                highlightedHolder = null;
+            }
         }
+    }
+
+    private void RegisterMove(CardHolder sourceHolder,CardHolder transferedHolder,List<Card> cardList)
+    {
+        Debug.Log(sourceHolder);
+        Debug.Log(transferedHolder);
+        Debug.Log(cardList);
+        registeredMoves++;
+        sourceHolders.Add(sourceHolder);
+        transferedHolders.Add(transferedHolder);
+        transferedCardLists.Add(cardList);
+    }
+
+    private void UndoMove()
+    {
+        if (registeredMoves == 0) return;
+        Debug.Log("UndoMove");
+        registeredMoves--;
+
+        transferedHolders[^1].RemoveCardsFromList(transferedCardLists[^1]);
+        sourceHolders[^1].AddCardsFromList(transferedCardLists[^1]);
+
+        transferedCardLists.Remove(transferedCardLists[^1]);
+        transferedHolders.Remove(transferedHolders[^1]);
+        sourceHolders.Remove(sourceHolders[^1]);
     }
 
     private void MoveCards(Vector3 _mousePos)
     {
-        for (int i = 1; i < pickedUpCards.Count+1; i++)
+        for (int i = 0; i < pickedUpCards.Count; i++)
         {
-            pickedUpCards[i-1].gameObject.transform.position = new Vector3(_mousePos.x, _mousePos.y - (0.4f * i), _mousePos.z - (0.1f * i));
+            Vector3 newPos = new (_mousePos.x, _mousePos.y - (0.4f * i), _mousePos.z - (0.1f + (0.1f * i)));
+            newPos.x -= offSet.x;
+            newPos.y -= offSet.y;
+            pickedUpCards[i].gameObject.transform.position = newPos;
+        }
+    }
+
+
+    private void HandleMouseMoveBoxCast(Vector3 _mousePos)
+    {
+        GameObject firstCard;
+        if (pickedUpCards.Count == 0) return;
+
+        firstCard = pickedUpCards[0].gameObject;
+
+        RaycastHit2D hit = Physics2D.BoxCast(firstCard.transform.position, firstCard.GetComponent<BoxCollider2D>().size, 0, Vector2.zero, 10, layerMask);
+        if (hit.collider == null)
+        {
+            if (highlightedHolder != null)
+            {
+                highlightedHolder.DeactivateCardHighlight();
+                highlightedHolder = null;
+            }
+            return;
+        }
+
+        if(hit.collider.gameObject.GetComponent<CardHolder>().IsCardTransferable(firstCard.GetComponent<Card>()))
+        {
+            highlightedHolder = hit.collider.gameObject.GetComponent<CardHolder>();
+            highlightedHolder.ActivateCardHighlight();
         }
     }
 
@@ -54,17 +156,19 @@ public class MainManager : MonoBehaviour
         RaycastHit2D[] rays = Physics2D.RaycastAll(_mousePos, transform.forward, 10);
         for (int i = 0; i < rays.Length; i++)
         {
-            if (rays[rays.Length-1].collider.CompareTag("FaceDownDeck"))
+            if (rays[^1].collider.CompareTag("FaceDownDeck"))
             {
                 if (rays.Length - 1 == 0)
                 {
+                    audios[2].Play();
                     rays[0].collider.gameObject.GetComponent<FaceDownDeck>().MoveCardsFromOpenedToClosed();
                 }
                 else
                 {
-                    rays[rays.Length - 1].collider.gameObject.GetComponent<FaceDownDeck>().AddToFaceUpDeck();
-                    return;
+                    audios[1].Play();
+                    rays[^1].collider.gameObject.GetComponent<FaceDownDeck>().AddToFaceUpDeck();
                 }
+                return;
             }
 
             if (rays[i].collider.CompareTag("Card") && pickedUpCards.Count == 0)
@@ -72,11 +176,20 @@ public class MainManager : MonoBehaviour
                 Card card = rays[i].collider.gameObject.GetComponent<Card>();
                 if (card.IsFaceUp())
                 {
-                    currentCardHolder = rays[rays.Length - 1].collider.gameObject;
-                    pickedUpCards = currentCardHolder.GetComponent<CardHolder>().GetCardListAfter(card);
+                    audios[0].Play();
+                    sourceCardHolder = rays[^1].collider.gameObject.GetComponent<CardHolder>();
+                    pickedUpCards = sourceCardHolder.GetCardListAfter(card);
+                    SetOffSet(mousePos, pickedUpCards[0].gameObject.transform.position);
                 }
             }  
         }
+    }
+
+    private void SetOffSet(Vector3 firstPoint, Vector3 secondPoint)
+    {
+        offSet.x = firstPoint.x - secondPoint.x;
+        offSet.y = firstPoint.y - secondPoint.y;
+        offSet.z = 0;
     }
 
     private void HandleMouseReleaseRayCast(Vector3 _mousePos)
@@ -85,30 +198,62 @@ public class MainManager : MonoBehaviour
 
         RaycastHit2D ray = Physics2D.Raycast(_mousePos, transform.forward, 10, layerMask);
 
-        if(ray.collider == null || ray.collider.gameObject == currentCardHolder
+        if(ray.collider == null || ray.collider.gameObject == sourceCardHolder
             || ray.collider.CompareTag("FaceDownDeck") || ray.collider.CompareTag("FaceUpDeck"))
         {
-            currentCardHolder.GetComponent<CardHolder>().SnapCardsToPosition();
+            sourceCardHolder.SnapCardsToPosition();
             return;
         }
 
         if(ray.collider.gameObject.GetComponent<CardHolder>().IsCardTransferable(pickedUpCards[0]))
         {
-            ray.collider.gameObject.GetComponent<CardHolder>().AddCardsFromList(pickedUpCards);
-            currentCardHolder.GetComponent<CardHolder>().RemoveCardsFromList(pickedUpCards);
+            audios[1].Play();
+            CardHolder transferedHolder = ray.collider.gameObject.GetComponent<CardHolder>();
+            transferedHolder.AddCardsFromList(pickedUpCards);
+            sourceCardHolder.RemoveCardsFromList(pickedUpCards);
+            RegisterMove(sourceCardHolder, transferedHolder, pickedUpCards);
         }
         else
         {
-            currentCardHolder.GetComponent<CardHolder>().SnapCardsToPosition();
+            sourceCardHolder.SnapCardsToPosition();
+        }
+    }
+
+    private void HandleDoubleMouseClick(Vector3 _mousePos)
+    {
+        pickedUpCards.Clear();
+        sourceCardHolder = null;
+        RaycastHit2D[] rays = Physics2D.RaycastAll(_mousePos, transform.forward, 10);
+        if (rays.Length <= 1) return;
+
+        Card card = rays[0].collider.gameObject.GetComponent<Card>();
+        CardHolder cardHolder = rays[^1].collider.gameObject.GetComponent<CardHolder>();
+
+        if(card.IsFaceUp() && cardHolder.IsTopCard(card))
+        {
+            List<Card> cards = new();
+            cards.Add(card);
+            for (int i = 0; i < cardHoldersTop.Count; i++)
+            {
+                if(cardHoldersTop[i].IsCardTransferable(card))
+                {
+                    audios[1].Play();
+                    CardHolder cardHolderTop = cardHoldersTop[i];
+                    cardHolder.RemoveCardsFromList(cards);
+                    cardHoldersTop[i].AddCardsFromList(cards);
+                    RegisterMove(cardHolder, cardHolderTop, cards);
+                    return;
+                }
+            }
         }
     }
 
     private void CheckClearCondition()
     {
         int stacksCompleted = 0;
-        foreach(GameObject cardholder in cardHoldersTop)
+        foreach(CardHolderTop cardholder in cardHoldersTop)
         {
-            if(cardholder.GetComponent<CardHolderTop>().IsStackComplete())
+            if(cardholder.IsStackComplete())
             {
                 stacksCompleted++;
             }
@@ -116,8 +261,21 @@ public class MainManager : MonoBehaviour
 
         if(stacksCompleted == 4)
         {
-            Debug.Log("You Win!");
+            hasWon = true;
+            gameWinPanel.SetActive(true);
         }
+    }
+
+    public void RestartGame()
+    {
+        for (int i = 0; i < cardHoldersTop.Count; i++)
+        {
+            List<Card> cardList = cardHoldersTop[i].GetAllCardsList();
+            DeckOfCards.instance.AddCardToDeckFromList(cardList);
+        }
+        hasWon = false;
+        Initialize();
+        gameWinPanel.SetActive(false);
     }
 
     public void Initialize()
@@ -129,16 +287,16 @@ public class MainManager : MonoBehaviour
             for(int j = 0; j <= i; j++)
             {
                 card = DeckOfCards.instance.GetRandomCardFromDeck();
-                cardHoldersBottom[i].GetComponent<CardHolder>().AddCardWithoutCondition(card);
+                cardHoldersBottom[i].AddCardWithoutCondition(card);
             }
-            cardHoldersBottom[i].GetComponent<CardHolder>().SnapCardsToPosition();
+            cardHoldersBottom[i].SnapCardsToPosition();
         }
         card = DeckOfCards.instance.GetRandomCardFromDeck();
         while(card != null)
         {
-            faceDownDeck.GetComponent<FaceDownDeck>().AddCardToFaceDownDeck(card);
+            faceDownDeck.AddCardToFaceDownDeck(card);
             card = DeckOfCards.instance.GetRandomCardFromDeck();
         }
-        faceDownDeck.GetComponent<CardHolder>().SnapCardsToPosition();
+        faceDownDeck.SnapCardsToPosition();
     }
 }

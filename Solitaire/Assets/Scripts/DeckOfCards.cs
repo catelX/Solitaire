@@ -56,6 +56,14 @@ public class DeckOfCards : MonoBehaviour
         }
     }
 
+    public void AddCardToDeckFromList(List<Card> cardList)
+    {
+        for (int i = 0; i < cardList.Count; i++)
+        {
+            deckOfCards.Add(cardList[i].gameObject);
+        }
+    }
+
     public Card GetRandomCardFromDeck()
     {
         int ranIndex = Random.Range(0, deckOfCards.Count);

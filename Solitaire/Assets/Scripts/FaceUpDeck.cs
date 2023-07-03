@@ -24,7 +24,7 @@ public class FaceUpDeck : CardHolder
     public Card RemoveAndReturnTopCard()
     {
         if (cards.Count == 0) return null;
-        Card card = cards[cards.Count - 1];
+        Card card = cards[^1];
         cards.Remove(card);
         return card;
     }
