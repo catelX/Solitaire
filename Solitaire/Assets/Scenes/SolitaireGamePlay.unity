@@ -1253,9 +1253,13 @@ MonoBehaviour:
   - {fileID: 179400424}
   - {fileID: 2003793474}
   faceDownDeck: {fileID: 1645281564}
-  layerMask:
+  faceUpDeck: {fileID: 435127937}
+  holderMask:
     serializedVersion: 2
     m_Bits: 64
+  cardMask:
+    serializedVersion: 2
+    m_Bits: 128
   gameWinPanel: {fileID: 1017621138}
 --- !u!4 &615260449
 Transform:
@@ -1436,6 +1440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c49ad836bf26e6b41bb937b2eef6941d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faceUpDeck: {fileID: 435127937}
 --- !u!4 &771614098
 Transform:
   m_ObjectHideFlags: 0

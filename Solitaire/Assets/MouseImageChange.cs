@@ -13,7 +13,7 @@ public class MouseImageChange : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
     void Update()
     {

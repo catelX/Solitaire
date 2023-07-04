@@ -9,6 +9,7 @@ public class UndoManager : MonoBehaviour
     private List<CardHolder> transferedHolders = new();
     private List<List<Card>> transferedCardLists = new();
     private List<bool> isHeadCardFlipped = new();
+    public CardHolder faceUpDeck;
 
     private int registeredMoves = 0;
 
@@ -32,6 +33,7 @@ public class UndoManager : MonoBehaviour
         transferedHolders.Add(transferedHolder);
         transferedCardLists.Add(cardList);
         isHeadCardFlipped.Add(isFaceUp);
+       
     }
 
     public void UndoMove()
@@ -40,7 +42,19 @@ public class UndoManager : MonoBehaviour
         registeredMoves--;
         bool isFaceUp = isHeadCardFlipped[^1];
         transferedHolders[^1].RemoveCardsFromList(transferedCardLists[^1]);
-        if (!isFaceUp && sourceHolders[^1].cards.Count != 0)
+
+        if (sourceHolders[^1].CompareTag("FaceDownDeck"))
+        {
+            transferedCardLists[^1][^1].SetFaceUp(false);
+        }
+        else if(sourceHolders[^1].CompareTag("FaceUpDeck") && transferedHolders[^1].CompareTag("FaceDownDeck"))
+        {
+            foreach(Card item in transferedCardLists[^1])
+            {
+                item.SetFaceUp(true);
+            }
+        }
+        else if (!isFaceUp && sourceHolders[^1].cards.Count != 0)
         {
             sourceHolders[^1].cards[^1].SetFaceUp(false);
         }
@@ -49,6 +63,7 @@ public class UndoManager : MonoBehaviour
         transferedCardLists.Remove(transferedCardLists[^1]);
         transferedHolders.Remove(transferedHolders[^1]);
         sourceHolders.Remove(sourceHolders[^1]);
+        isHeadCardFlipped.Remove(isHeadCardFlipped[^1]);
         AudioManager.instance.PlayCardUndoClip();
     }
 }

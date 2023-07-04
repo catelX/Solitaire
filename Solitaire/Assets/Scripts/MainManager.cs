@@ -8,19 +8,18 @@ public class MainManager : MonoBehaviour
     public List<CardHolderTop> cardHoldersTop = new();
     public List<CardHolderBottom> cardHoldersBottom = new();
     public FaceDownDeck faceDownDeck;
-    public LayerMask layerMask;
+    public FaceUpDeck faceUpDeck;
+    public LayerMask holderMask;
+    public LayerMask cardMask;
 
     private Vector3 mousePos;
     private Vector3 offSet;
 
     private List<Card> pickedUpCards = new();
-    private List<CardHolder> sourceHolders = new();
-    private List<CardHolder> transferedHolders = new();
-    private List<List<Card>> transferedCardLists = new();
     private CardHolder sourceCardHolder;
-    private int registeredMoves = 0;
 
     private CardHolder highlightedHolder;
+    private Card highLightedCard;
     private bool mouseClickedOnce;
     private float mouseSecondClickTimer;
 
@@ -41,7 +40,9 @@ public class MainManager : MonoBehaviour
 
         if (hasWon) return;
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        HandleMouseHoverhighLight();
+
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             UndoManager.instance.UndoMove();
             return;
@@ -59,15 +60,17 @@ public class MainManager : MonoBehaviour
             if(mouseClickedOnce)
             {
                 mouseSecondClickTimer = 0;
+                pickedUpCards.Clear();
+                sourceCardHolder = null;
                 HandleDoubleMouseClick(mousePos);
                 mouseClickedOnce = false;
+                return;
             }
             else
             {
                 mouseClickedOnce = true;
                 HandleMouseClickRayCast(mousePos);
             }
-            return;
         }
         if(Input.GetMouseButton(0))
         {
@@ -99,15 +102,42 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    private void HandleMouseHoverhighLight()
+    {
+        if (pickedUpCards.Count == 0)
+        {
+            RaycastHit2D ray = Physics2D.Raycast(mousePos, transform.forward, 10, cardMask);
+
+            if (ray.collider == null && highLightedCard != null)
+            {
+                highLightedCard.highLightParticle.Stop();
+                highLightedCard = null;
+                return;
+            }
+            else if (ray.collider != null && ray.collider.gameObject.GetComponent<Card>().IsFaceUp())
+            {
+                if (ray.collider.gameObject.GetComponent<Card>() != highLightedCard)
+                {
+                    if (highLightedCard != null)
+                    {
+                        highLightedCard.highLightParticle.Stop();
+                        highLightedCard = null;
+                    }
+                    highLightedCard = ray.collider.gameObject.GetComponent<Card>();
+                    highLightedCard.highLightParticle.Play();
+                }
+            }
+        }
+    }
 
     private void HandleMouseMoveBoxCast()
     {
-        GameObject firstCard;
         if (pickedUpCards.Count == 0) return;
 
+        GameObject firstCard;
         firstCard = pickedUpCards[0].gameObject;
 
-        RaycastHit2D hit = Physics2D.BoxCast(firstCard.transform.position, firstCard.GetComponent<BoxCollider2D>().size, 0, Vector2.zero, 10, layerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(firstCard.transform.position, firstCard.GetComponent<BoxCollider2D>().size, 0, Vector2.zero, 10, holderMask);
         if (hit.collider == null)
         {
             if (highlightedHolder != null)
@@ -118,7 +148,7 @@ public class MainManager : MonoBehaviour
             return;
         }
 
-        if(hit.collider.gameObject.GetComponent<CardHolder>().IsCardTransferable(firstCard.GetComponent<Card>()))
+        if (hit.collider.gameObject.GetComponent<CardHolder>().IsCardTransferable(firstCard.GetComponent<Card>()))
         {
             highlightedHolder = hit.collider.gameObject.GetComponent<CardHolder>();
             highlightedHolder.ActivateCardHighlight();
@@ -130,16 +160,22 @@ public class MainManager : MonoBehaviour
         RaycastHit2D[] rays = Physics2D.RaycastAll(_mousePos, transform.forward, 10);
         for (int i = 0; i < rays.Length; i++)
         {
+            List<Card> cardList = new();
             if (rays[^1].collider.CompareTag("FaceDownDeck"))
             {
                 if (rays.Length - 1 == 0)
                 {
+                    cardList = faceUpDeck.GetAllCardsList();
                     rays[0].collider.gameObject.GetComponent<FaceDownDeck>().MoveCardsFromOpenedToClosed();
+                    UndoManager.instance.RegisterMove(faceUpDeck, faceDownDeck, cardList, false);
                     AudioManager.instance.PlayCardShuffleClip();
                 }
                 else
                 {
+                    cardList.Add(rays[^1].collider.gameObject.GetComponent<CardHolder>().cards[^1]);
                     rays[^1].collider.gameObject.GetComponent<FaceDownDeck>().AddToFaceUpDeck();
+
+                    UndoManager.instance.RegisterMove(faceDownDeck, faceUpDeck, cardList, false);
                     AudioManager.instance.PlayCardReleasedClip();
                 }
                 return;
@@ -171,9 +207,14 @@ public class MainManager : MonoBehaviour
         GameObject firstCard;
         if (pickedUpCards.Count == 0) return;
 
-        firstCard = pickedUpCards[0].gameObject;
+        List<Card> cardList = new();
+        foreach(Card item in pickedUpCards)
+        {
+            cardList.Add(item);
+        }
+        firstCard = cardList[0].gameObject;
 
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(_mousePos, firstCard.gameObject.GetComponent<BoxCollider2D>().size, 0, Vector2.zero,10,layerMask);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(_mousePos, firstCard.gameObject.GetComponent<BoxCollider2D>().size, 0, Vector2.zero,10,holderMask);
         if(hits.Length == 0) sourceCardHolder.SnapCardsToPosition();
 
         for (int i = 0; i < hits.Length; i++)
@@ -186,12 +227,12 @@ public class MainManager : MonoBehaviour
                 return;
             }
 
-            if(hits[i].collider.gameObject.GetComponent<CardHolder>().IsCardTransferable(pickedUpCards[0]))
+            if(hits[i].collider.gameObject.GetComponent<CardHolder>().IsCardTransferable(cardList[0]))
             {
-                bool isFaceUp = sourceCardHolder.IsCardAboveFaceUp(pickedUpCards[0]);
-                sourceCardHolder.RemoveCardsFromList(pickedUpCards);
-                transferedHolder.AddCardsFromList(pickedUpCards);
-                UndoManager.instance.RegisterMove(sourceCardHolder, transferedHolder, pickedUpCards, isFaceUp);
+                bool isFaceUp = sourceCardHolder.IsCardAboveFaceUp(cardList[0]);
+                sourceCardHolder.RemoveCardsFromList(cardList);
+                transferedHolder.AddCardsFromList(cardList);
+                UndoManager.instance.RegisterMove(sourceCardHolder, transferedHolder, cardList, isFaceUp);
                 return;
             }
         }
@@ -212,7 +253,7 @@ public class MainManager : MonoBehaviour
             cards.Add(card);
             for (int i = 0; i < cardHoldersTop.Count; i++)
             {
-                if(cardHoldersTop[i].IsCardTransferable(card))
+                if(cardHoldersTop[i].IsCardTransferable(card) && !cardHolder.CompareTag("CardHolderTop"))
                 {
                     bool isFaceUp = cardHolder.IsCardAboveFaceUp(card);
                     cardHolder.RemoveCardsFromList(cards);

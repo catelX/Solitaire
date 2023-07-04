@@ -14,6 +14,7 @@ namespace Cards
 
     public class Card : MonoBehaviour
     {
+        public ParticleSystem highLightParticle;
         private SpriteRenderer spriteRenderer;
         private Sprite faceUpImage;
         public Sprite faceDownImage;
@@ -25,6 +26,7 @@ namespace Cards
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             isFaceUp = false;
+            highLightParticle.Stop();
         }
 
         public void ConfigureCard(Sprite _faceUpImage, int _value, Symbols _symbol)
