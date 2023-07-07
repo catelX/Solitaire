@@ -14,19 +14,22 @@ namespace Cards
 
     public class Card : MonoBehaviour
     {
-        public ParticleSystem highLightParticle;
         private SpriteRenderer spriteRenderer;
+        private Rigidbody2D rb;
         private Sprite faceUpImage;
         public Sprite faceDownImage;
         private bool isFaceUp;
         private int value;
+        public bool isJumping;
+        private float force;
+        private Vector2 direction;
         
         public Symbols symbol;
         private void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
+            rb = GetComponent<Rigidbody2D>();
             isFaceUp = false;
-            highLightParticle.Stop();
         }
 
         public void ConfigureCard(Sprite _faceUpImage, int _value, Symbols _symbol)
@@ -34,6 +37,27 @@ namespace Cards
             faceUpImage = _faceUpImage;
             value = _value;
             symbol = _symbol;
+        }
+
+        private void FixedUpdate()
+        {
+            if(isJumping)
+            {
+                rb.AddForce(direction * force);
+            }
+        }
+
+        public void ChangeBackImage(Sprite image)
+        {
+            faceDownImage = image;
+        }
+
+        public void EnableCardJump()
+        {
+            isJumping = true;
+            direction = new Vector2(Random.Range(-5f, 5f), Random.Range(0f, 5f));
+            force = Random.Range(1f, 5f);
+            gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
 
         private void Update()
@@ -46,7 +70,6 @@ namespace Cards
             {
                 spriteRenderer.sprite = faceDownImage;
             }
-
         }
 
         public void SetFaceUp(bool _isFaceUp)

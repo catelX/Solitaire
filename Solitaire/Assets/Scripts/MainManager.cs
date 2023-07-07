@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cards;
+using UnityEngine.UI;
 
 public class MainManager : MonoBehaviour
 {
@@ -10,7 +11,9 @@ public class MainManager : MonoBehaviour
     public FaceDownDeck faceDownDeck;
     public FaceUpDeck faceUpDeck;
     public LayerMask holderMask;
-    public LayerMask cardMask;
+    public ParticleSystem cardHighlightParticle;
+    Texture2D screenShot;
+    public Image winScreen;
 
     private Vector3 mousePos;
     private Vector3 offSet;
@@ -19,17 +22,21 @@ public class MainManager : MonoBehaviour
     private CardHolder sourceCardHolder;
 
     private CardHolder highlightedHolder;
-    private Card highLightedCard;
     private bool mouseClickedOnce;
     private float mouseSecondClickTimer;
 
     public GameObject gameWinPanel;
     private bool hasWon;
+    public bool sfxEnabled;
+    public bool isPanel;
 
     private void Start()
     {
+        Camera.onPostRender += OnPostRenderCallBack;
+        cardHighlightParticle.Stop();
+        sfxEnabled = true;
+        isPanel = false;
         hasWon = false;
-        Cursor.visible = false;
         Initialize();
     }
 
@@ -38,9 +45,13 @@ public class MainManager : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = -5f;
 
-        if (hasWon) return;
-
-        HandleMouseHoverhighLight();
+        if (hasWon)
+        {
+            WinScreen();
+            return;
+        }
+        if (isPanel) return;
+        if(sfxEnabled) HandleMouseHoverhighLight(mousePos);
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -90,6 +101,32 @@ public class MainManager : MonoBehaviour
             }
         }
     }
+    private void LateUpdate()
+    {
+        if(screenShot != null)
+        {
+            Sprite sprite = Sprite.Create(screenShot, new Rect(0, 0, Screen.width, Screen.height), new Vector2(0, 0));
+            if (winScreen)
+                winScreen.sprite = sprite;
+        }
+    }
+
+    public void SFXEnabled(bool isEnabled)
+    {
+        sfxEnabled = isEnabled;
+    }
+
+
+    private void OnPostRenderCallBack(Camera cam)
+    {
+        if (!hasWon) return;
+        if (cam == Camera.main)
+        {
+            screenShot = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+            screenShot.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+            screenShot.Apply();
+        }
+    }
 
     private void MoveCards(Vector3 _mousePos)
     {
@@ -102,31 +139,46 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    private void HandleMouseHoverhighLight()
+    // Mouse Hover, Move, Click, Release, Double Click Handle -----------------------------------------/
+    private void HandleMouseHoverhighLight(Vector3 _mousePos)
     {
         if (pickedUpCards.Count == 0)
         {
-            RaycastHit2D ray = Physics2D.Raycast(mousePos, transform.forward, 10, cardMask);
+            RaycastHit2D[] rays = Physics2D.RaycastAll(_mousePos, transform.forward, 10);
 
-            if (ray.collider == null && highLightedCard != null)
+            for (int i = 0; i < rays.Length; i++)
             {
-                highLightedCard.highLightParticle.Stop();
-                highLightedCard = null;
-                return;
-            }
-            else if (ray.collider != null && ray.collider.gameObject.GetComponent<Card>().IsFaceUp())
-            {
-                if (ray.collider.gameObject.GetComponent<Card>() != highLightedCard)
+                if (rays[0].collider == null || rays.Length == 1)
                 {
-                    if (highLightedCard != null)
+                    cardHighlightParticle.Stop();
+                    return;
+                }
+                if (rays[^1].collider.CompareTag("FaceUpDeck"))
+                {
+                    if(rays[^1].collider.GetComponent<CardHolder>().IsTopCard(rays[0].collider.GetComponent<Card>()))
                     {
-                        highLightedCard.highLightParticle.Stop();
-                        highLightedCard = null;
+                        cardHighlightParticle.gameObject.transform.position = rays[0].collider.gameObject.transform.position;
+                        cardHighlightParticle.Play();
                     }
-                    highLightedCard = ray.collider.gameObject.GetComponent<Card>();
-                    highLightedCard.highLightParticle.Play();
+                    else
+                    {
+                        cardHighlightParticle.Stop();
+                    }
+                }
+                else if(rays[0].collider.GetComponent<Card>().IsFaceUp())
+                {
+                    cardHighlightParticle.gameObject.transform.position = rays[0].collider.gameObject.transform.position;
+                    cardHighlightParticle.Play();
+                }
+                else
+                {
+                    cardHighlightParticle.Stop();
                 }
             }
+        }
+        else
+        {
+            cardHighlightParticle.Stop();
         }
     }
 
@@ -160,22 +212,26 @@ public class MainManager : MonoBehaviour
         RaycastHit2D[] rays = Physics2D.RaycastAll(_mousePos, transform.forward, 10);
         for (int i = 0; i < rays.Length; i++)
         {
-            List<Card> cardList = new();
             if (rays[^1].collider.CompareTag("FaceDownDeck"))
             {
+                List<Card> cardList;
                 if (rays.Length - 1 == 0)
                 {
                     cardList = faceUpDeck.GetAllCardsList();
-                    rays[0].collider.gameObject.GetComponent<FaceDownDeck>().MoveCardsFromOpenedToClosed();
+                    faceDownDeck.MoveCardsFromOpenedToClosed();
                     UndoManager.instance.RegisterMove(faceUpDeck, faceDownDeck, cardList, false);
                     AudioManager.instance.PlayCardShuffleClip();
                 }
                 else
                 {
-                    cardList.Add(rays[^1].collider.gameObject.GetComponent<CardHolder>().cards[^1]);
-                    rays[^1].collider.gameObject.GetComponent<FaceDownDeck>().AddToFaceUpDeck();
-
-                    UndoManager.instance.RegisterMove(faceDownDeck, faceUpDeck, cardList, false);
+                    cardList = faceDownDeck.GetThreeCardList();
+                    faceUpDeck.AddCardsFromList(cardList);
+                    List<Card> inverseList = new();
+                    for (int j = cardList.Count - 1; j >= 0; j--)
+                    {
+                        inverseList.Add(cardList[j]);
+                    }
+                    UndoManager.instance.RegisterMove(faceDownDeck, faceUpDeck, inverseList, false);
                     AudioManager.instance.PlayCardReleasedClip();
                 }
                 return;
@@ -183,23 +239,29 @@ public class MainManager : MonoBehaviour
 
             if (rays[i].collider.CompareTag("Card") && pickedUpCards.Count == 0)
             {
-                Card card = rays[i].collider.gameObject.GetComponent<Card>();
-                if (card.IsFaceUp())
+                if (rays[^1].collider.CompareTag("FaceUpDeck"))
                 {
-                    sourceCardHolder = rays[^1].collider.gameObject.GetComponent<CardHolder>();
-                    pickedUpCards = sourceCardHolder.GetCardListAfter(card);
-                    SetOffSet(mousePos, pickedUpCards[0].gameObject.transform.position);
-                    AudioManager.instance.PlayCardPickedClip();
+                    if(rays[^1].collider.GetComponent<CardHolder>().IsTopCard(rays[0].collider.GetComponent<Card>()))
+                    {
+                        sourceCardHolder = rays[^1].collider.gameObject.GetComponent<CardHolder>();
+                        pickedUpCards = sourceCardHolder.GetCardListAfter(rays[0].collider.GetComponent<Card>());
+                        SetCardOffSet(mousePos, pickedUpCards[0].gameObject.transform.position);
+                        AudioManager.instance.PlayCardPickedClip();
+                    }
+                }
+                else
+                {
+                    Card card = rays[i].collider.gameObject.GetComponent<Card>();
+                    if (card.IsFaceUp())
+                    {
+                        sourceCardHolder = rays[^1].collider.gameObject.GetComponent<CardHolder>();
+                        pickedUpCards = sourceCardHolder.GetCardListAfter(card);
+                        SetCardOffSet(mousePos, pickedUpCards[0].gameObject.transform.position);
+                        AudioManager.instance.PlayCardPickedClip();
+                    }
                 }
             }  
         }
-    }
-
-    private void SetOffSet(Vector3 firstPoint, Vector3 secondPoint)
-    {
-        offSet.x = firstPoint.x - secondPoint.x;
-        offSet.y = firstPoint.y - secondPoint.y;
-        offSet.z = 0;
     }
 
     private void HandleMouseReleaseBoxCast(Vector3 _mousePos)
@@ -239,6 +301,7 @@ public class MainManager : MonoBehaviour
         sourceCardHolder.SnapCardsToPosition();
     }
 
+
     private void HandleDoubleMouseClick(Vector3 _mousePos)
     {
         RaycastHit2D[] rays = Physics2D.RaycastAll(_mousePos, transform.forward, 10);
@@ -265,6 +328,15 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    private void SetCardOffSet(Vector3 firstPoint, Vector3 secondPoint)
+    {
+        offSet.x = firstPoint.x - secondPoint.x;
+        offSet.y = firstPoint.y - secondPoint.y;
+        offSet.z = 0;
+    }
+
+    // Start And Restart Game-------------------------------------------------/
+
     private void CheckClearCondition()
     {
         int stacksCompleted = 0;
@@ -279,7 +351,50 @@ public class MainManager : MonoBehaviour
         if(stacksCompleted == 4)
         {
             hasWon = true;
-            gameWinPanel.SetActive(true);
+            winScreen.gameObject.SetActive(true);
+        }
+    }
+
+    private int holderIndex = 0;
+    private float timer = 3f;
+    private float duration;
+    private List<Card> jumpedCards = new();
+
+    private void WinScreen()
+    {
+        timer += Time.deltaTime;
+        duration += Time.deltaTime;
+        if(timer >= 3f)
+        {
+            timer = 0;
+            Card card = cardHoldersTop[holderIndex].cards[^1];
+            card.GetComponent<CardJump>().ConfigureForJump();
+            cardHoldersTop[holderIndex].RemoveCard(card);
+            jumpedCards.Add(card);
+            if(holderIndex < 3)
+            {
+                holderIndex++;
+            }
+            else
+            {
+                holderIndex = 0;
+            }
+        }
+        if(duration >= 60f || Input.GetMouseButtonDown(0))
+        {
+            DeactivateWinScreen();
+            winScreen.enabled = false;
+            hasWon = false;
+            UIManager.instance.ActivateWinPanel();
+        }
+    }
+
+    private void DeactivateWinScreen()
+    {
+        foreach(Card card in jumpedCards)
+        {
+            card.gameObject.GetComponent<CardJump>().SetJump(false);
+            card.gameObject.SetActive(true);
         }
     }
 
@@ -290,9 +405,25 @@ public class MainManager : MonoBehaviour
             List<Card> cardList = cardHoldersTop[i].GetAllCardsList();
             DeckOfCards.instance.AddCardsToDeckFromList(cardList);
         }
-        hasWon = false;
+        foreach(Card card in jumpedCards)
+        {
+            DeckOfCards.instance.AddCard(card);
+        }
         Initialize();
-        gameWinPanel.SetActive(false);
+    }
+
+    private void InitializeTest()
+    {
+        Card card;
+        for (int i = 0; i < cardHoldersTop.Count; i++)
+        {
+            for (int j = 0; j < 13; j++)
+            {
+                card = DeckOfCards.instance.GetRandomCardFromDeck();
+                cardHoldersTop[i].AddCardWithoutCondition(card);
+            }
+            cardHoldersTop[i].SnapCardsToPosition();
+        }
     }
 
     public void Initialize()

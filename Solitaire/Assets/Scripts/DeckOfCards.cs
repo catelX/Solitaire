@@ -7,12 +7,14 @@ public class DeckOfCards : MonoBehaviour
 {
     public static DeckOfCards instance;
     public GameObject cardPrefab;
+    public List<Sprite> backImages = new();
     public List<Sprite> spadeSprites = new();
     public List<Sprite> clubSprites = new();
     public List<Sprite> heartSprites = new();
     public List<Sprite> diamondSprites = new();
 
     private List<GameObject> deckOfCards = new();
+    private List<Card> referenceToAllCards = new();
 
     private void Awake()
     {
@@ -25,6 +27,36 @@ public class DeckOfCards : MonoBehaviour
             Destroy(gameObject);
         }
         CreateDeckOfCards();
+        AddToReferenceList();
+    }
+
+    public void ChangeBackImageToRed()
+    {
+        foreach(Card card in referenceToAllCards)
+        {
+            card.ChangeBackImage(backImages[0]);
+        }
+    }
+    public void ChangeBackImageToGreen()
+    {
+        foreach (Card card in referenceToAllCards)
+        {
+            card.ChangeBackImage(backImages[1]);
+        }
+    }
+    public void ChangeBackImageToBlue()
+    {
+        foreach (Card card in referenceToAllCards)
+        {
+            card.ChangeBackImage(backImages[2]);
+        }
+    }
+    public void ChangeBackImageToBlack()
+    {
+        foreach (Card card in referenceToAllCards)
+        {
+            card.ChangeBackImage(backImages[3]);
+        }
     }
 
     private void CreateDeckOfCards()
@@ -56,12 +88,26 @@ public class DeckOfCards : MonoBehaviour
         }
     }
 
+    private void AddToReferenceList()
+    {
+        foreach(GameObject card in deckOfCards)
+        {
+            Card newCard = card.GetComponent<Card>();
+            referenceToAllCards.Add(newCard);
+        }
+    }
+
     public void AddCardsToDeckFromList(List<Card> cardList)
     {
         for (int i = 0; i < cardList.Count; i++)
         {
             deckOfCards.Add(cardList[i].gameObject);
         }
+    }
+
+    public void AddCard(Card card)
+    {
+        deckOfCards.Add(card.gameObject);
     }
 
     public Card GetRandomCardFromDeck()

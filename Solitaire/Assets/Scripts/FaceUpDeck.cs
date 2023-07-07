@@ -9,9 +9,22 @@ public class FaceUpDeck : CardHolder
 
     public override void SnapCardsToPosition()
     {
-        for (int i = 0; i < cards.Count; i++)
+        int index = 0;
+        int zIndex = 0;
+        for (int i = 0; i < cards.Count-3; i++)
         {
             cards[i].gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - (0.1f * (i + 1)));
+            zIndex++;
+        }
+        for (int i = 3; i > 0; i--)
+        {
+            if (cards.Count-i < 0)
+            {
+                continue;
+            }
+            cards[^i].gameObject.transform.position = new Vector3(transform.position.x + (index * 0.4f), transform.position.y, transform.position.z - (0.1f * (zIndex + 1)));
+            index++;
+            zIndex++;
         }
     }
 

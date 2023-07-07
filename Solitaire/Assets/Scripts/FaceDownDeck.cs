@@ -15,12 +15,17 @@ public class FaceDownDeck : CardHolder
         }
     }
 
-    public void AddToFaceUpDeck()
+    public List<Card> GetThreeCardList()
     {
-        Card card = cards[^1];
-        cards.Remove(card);
-        card.SetFaceUp(true);
-        faceUpDeck.AddCard(card);
+        List<Card> cardList = new();
+        for (int i = 0; i < 3; i++)
+        {
+            if (cards.Count == 0) break;
+            cards[^1].SetFaceUp(true);
+            cardList.Add(cards[^1]);
+            cards.Remove(cards[^1]);
+        }
+        return cardList;
     }
 
     public void MoveCardsFromOpenedToClosed()

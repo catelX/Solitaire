@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
     public List<AudioClip> clips = new();
-    public AudioSource source;
+    public AudioSource soundEffects;
+    public AudioSource BGM;
 
     public static AudioManager instance;
+
+    public event Action<float> onSoundEffectVolumeChange;
 
     private void Awake()
     {
@@ -21,25 +25,35 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void ChangeBGMVolume(float _value)
+    {
+        BGM.volume = _value;
+    }
+
+    public void ChangeSoundEffectsVolume(float _value)
+    {
+        onSoundEffectVolumeChange(_value);
+    }
+
     public void PlayCardPickedClip()
     {
-        source.clip = clips[0];
-        source.Play();
+        soundEffects.clip = clips[0];
+        soundEffects.Play();
     }
     public void PlayCardReleasedClip()
     {
-        source.clip = clips[1];
-        source.Play();
+        soundEffects.clip = clips[1];
+        soundEffects.Play();
     }
     public void PlayCardShuffleClip()
     {
-        source.clip = clips[2];
-        source.Play();
+        soundEffects.clip = clips[2];
+        soundEffects.Play();
     }
     public void PlayCardUndoClip()
     {
-        source.clip = clips[3];
-        source.Play();
+        soundEffects.clip = clips[3];
+        soundEffects.Play();
     }
 
 }
